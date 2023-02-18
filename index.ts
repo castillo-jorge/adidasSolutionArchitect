@@ -17,6 +17,11 @@ app.use('/product', productSvc);
 const reviewSvc = require('./controllers/review.controller');
 app.use('/review', reviewSvc);
 
+// Load data connectors
+const dataModel = require('./data/sqliteConnector');
+app.set("reviewDB", dataModel);
+
+
 app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });
