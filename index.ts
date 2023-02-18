@@ -6,9 +6,16 @@ dotenv.config();
 const app: Express = express();
 const port = process.env.PORT;
 
-//Routes section
-const productSvc = require('./controllers/product');
+/******************************************************
+ * Load app routes
+ */
+
+//Product Information
+const productSvc = require('./controllers/product.controller');
 app.use('/product', productSvc);
+// Reviews
+const reviewSvc = require('./controllers/review.controller');
+app.use('/review', reviewSvc);
 
 app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
