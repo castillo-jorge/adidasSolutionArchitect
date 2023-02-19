@@ -16,9 +16,23 @@ router.route("/:id")
         const id = req.params.id;
 
         //call model function to retrieve review data (async)
-        reviewModel.getReview(req.app, id, function (err: Error, result: object) {
+        reviewModel.getReview(req.app, id, (err: Error, result: object) => {
+            //Handle the response from DB
             if (err === null) {
-                res.json(result);
+                if (result){
+                    //we got a result
+                    res.json(result);
+                }
+                else{
+                    //not found
+                    res.status(404).json();
+                }
+
+            }
+            else {
+                //any other problem
+                //TODO: check err object and send a better error code
+                res.status(500).send(err);
             }
         });
 
@@ -30,7 +44,15 @@ router.route("/:id")
         res.json({ "operation": "post" });
     })
     .delete(function (req: Request, res: Response, next: CallableFunction) {
-        res.json({ "operation": "delete" });
+        const id = req.params.id;
+
+        reviewModel.deleteReview(req.app, id, (err: Error) => {
+            if (err === null){
+                res.status(204).json();
+            }else{
+                res.status(500).json();
+            }
+        })
     })
     .all(function (req: Request, res: Response, next: CallableFunction) {
         // Empty response for all other verbs
