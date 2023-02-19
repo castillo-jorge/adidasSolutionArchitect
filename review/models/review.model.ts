@@ -33,8 +33,6 @@ let reviewModel = {
                 e.name = "500";
                 callback(e, undefined);
             }
-
-            callback(err, result);
         });
     },
 

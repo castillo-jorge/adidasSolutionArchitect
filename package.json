@@ -6,6 +6,8 @@
   "scripts": {
     "build": "npx tsc",
     "startProduct": "node dist/product/index.js",
+    "startReview": "node dist/review/index.js",
+    "startAll": "npm run startReview & npm run startProduct",
     "dev": "concurrently  \"nodemon dist/products/index.js\" \"nodemon dist/reviews/index.js\""
   },
   "keywords": [],
