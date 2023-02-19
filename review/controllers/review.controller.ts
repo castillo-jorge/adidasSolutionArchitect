@@ -9,7 +9,7 @@ const express = require('express');
 const router = express.Router();
 import { Request, Response } from "express";
 const reviewModel = require('../models/review.model');
-const authMW = require('../middlewares/authorization.model');
+const authMW = require('../../middlewares/authorization.middleware');
 
 
 router.route("/:id")

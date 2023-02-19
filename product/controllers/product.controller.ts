@@ -11,25 +11,39 @@ import { Request, Response } from "express";
 const productModel = require('../models/product.model');
 
 
+
 router.route("/:id")
     .get(function (req: Request, res: Response, next: CallableFunction) {
         const id: string = req.params.id;
 
-        //call model function to product review data (async)
         productModel.getProduct(req.app, id, (err: Error, result: any) => {
-            debugger;
             if (err === null) {
-                res.status(200).json(result);
+                //now we have the data coming from adidas API
+                //let's aggregate reviews data
+                productModel.getProductReview(req.app, id, (err: Error, reviewResult: any) => {
+                    if (err === null) {
+                        //aggregate results
+                        result["review"] = reviewResult;
+                        //send complete response
+                        res.status(200).json(result);
+                    }
+                    else{
+                        res.status(parseInt(err.name)).json({ "error": err.message });
+                    }
+                })
             }
             else {
                 res.status(parseInt(err.name)).json({ "error": err.message });
             }
 
-        });
+        })
+
+
 
     })
     .all(function (req: Request, res: Response, next: CallableFunction) {
         // Empty response for all other verbs
+        debugger;
         res.status(501).send();
     })
 
