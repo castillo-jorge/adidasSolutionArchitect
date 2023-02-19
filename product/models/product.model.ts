@@ -28,6 +28,12 @@ let productModel = {
                     })
                 }
             })
+            .catch(err => {
+                let e = new Error();
+                e.name = "500";
+                e.message = "Unexpected error";
+                callback(e, undefined);
+            })
 
 
     },
@@ -40,7 +46,7 @@ let productModel = {
         fetch(URL + id)
             .then(res => {
                 debugger;
-                if (res.status !== 200) {
+                if (!res.ok) {
                     res.json().then((data) => {
                         let e = new Error();
                         e.name = res.status.toFixed(0);
@@ -55,10 +61,16 @@ let productModel = {
                     })
                 }
             })
+            .catch(err => {
+                let e = new Error();
+                e.name = "500";
+                e.message = "Unexpected error";
+                callback(e, undefined);
+            })
+
     }
-
-
 }
+
 
 
 //export only public methods for this module
