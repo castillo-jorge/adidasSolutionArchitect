@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 dotenv.config();
 
 const app: Express = express();
-const port = process.env.REVIEW_PORT;
+const port = process.env.PORT;
 
 
 app.use(bodyParser.json({ extended: true }));
@@ -15,13 +15,18 @@ app.use(bodyParser.json({ extended: true }));
  */
 
 
+//Product Information
+const productSvc = require('./controllers/product.controller');
+app.use('/product', productSvc);
 // Reviews
 const reviewSvc = require('./controllers/review.controller');
 app.use('/review', reviewSvc);
 
+
 // Load data connectors
-const dataModel = require('../data/sqliteConnector');
+const dataModel = require('./data/sqliteConnector');
 app.set("reviewDB", dataModel);
+
 
 
 app.listen(port, () => {

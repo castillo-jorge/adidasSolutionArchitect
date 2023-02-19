@@ -7,23 +7,11 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch product",
+            "name": "Launch Challenge",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/product/index.ts",
-            "outFiles": [
-                "${workspaceFolder}/**/*.js"
-            ]
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Launch review",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "program": "${workspaceFolder}/review/index.ts",
+            "program": "${workspaceFolder}/index.ts",
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ]
