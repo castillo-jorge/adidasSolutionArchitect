@@ -26,7 +26,7 @@ app.use('/review', reviewSvc);
 const dataModel = require('./data/sqliteConnector');
 app.set("reviewDB", dataModel);
 const dataModel2 = require('./data/tingodbConnector');
-app.set("productsDB", dataModel2);
+app.set("productDB", dataModel2);
 
 
 app.listen(port, () => {

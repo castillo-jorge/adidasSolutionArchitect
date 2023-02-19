@@ -1,6 +1,12 @@
-{"k":"0000000078","o":"0000000052","v":"001"}
-{"_id":2,"_uid":2,"_dt":1676823084093,"_s":"b88a8c12a330e94ba2faa39a02328f2f"}
-{"hello":"world_safe1","_id":{"$wrap":"$oid","v":2}}
-{"k":"0000000078","o":"0000000052","v":"001"}
-{"_id":3,"_uid":3,"_dt":1676823084095,"_s":"d598554b95c616d30ea5ee54e62381fa"}
-{"hello":"world_safe2","_id":{"$wrap":"$oid","v":3}}
+{"k":"0000000078","o":"0000000151","v":"001"}
+{"_id":2,"_uid":2,"_dt":1676826907426,"_s":"d6a6844d5c50dfe584e7ebe39f5144fe"}
+{"productID":"AB1234","category":"football t-shirt","colour":"red","team":"Real Zaragoza","size":"XL","unitsAvailable":10,"_id":{"$wrap":"$oid","v":2}}
+{"k":"0000000078","o":"0000000129","v":"001"}
+{"_id":3,"_uid":3,"_dt":1676826907428,"_s":"e2cf2bd9c8c5c1d4eaf9d3750d4059a8"}
+{"productID":"BC2345","category":"goalkeeper gloves","colour":"navy","size":"10","unitsAvailable":1,"_id":{"$wrap":"$oid","v":3}}
+{"k":"0000000078","o":"0000000139","v":"001"}
+{"_id":4,"_uid":4,"_dt":1676826907429,"_s":"5ed61b013368aab00ed42287f904621c"}
+{"productID":"CD3456","category":"shoes","colour":"white","sport":"tennis","size":"43 1/3","unitsAvailable":0,"_id":{"$wrap":"$oid","v":4}}
+{"k":"0000000078","o":"0000000143","v":"001"}
+{"_id":5,"_uid":5,"_dt":1676826907429,"_s":"c3f3ad613e3d56f391638d7627ff341c"}
+{"productID":"DE4567","category":"shoes","colour":"balck","sport":"basketball","size":"42 2/3","unitsAvailable":1,"_id":{"$wrap":"$oid","v":5}}

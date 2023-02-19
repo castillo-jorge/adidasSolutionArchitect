@@ -22,7 +22,7 @@ router.route("/:id")
                 res.status(200).json(result);
             }
             else {
-
+                res.status(parseInt(err.name)).json({ "error": err.message });
             }
 
         });
