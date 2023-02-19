@@ -32,3 +32,5 @@ app.set("reviewDB", dataModel);
 app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });
+
+module.exports = app; //for testing

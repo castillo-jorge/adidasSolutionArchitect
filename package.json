@@ -1,12 +1,13 @@
 {
-  "name": "challengeJCastillo",
+  "name": "challengejcastillo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/index.js",
-    "dev": "concurrently  \"nodemon dist/index.js\""
+    "dev": "concurrently  \"nodemon dist/index.js\"",
+    "test": "mocha --timeout 10000"
   },
   "keywords": [],
   "author": "",
@@ -19,8 +20,11 @@
     "@types/express": "^4.17.17",
     "@types/node": "^18.13.0",
     "body-parser": "^1.20.1",
+    "chai": "^4.3.7",
+    "chai-http": "^4.3.0",
     "concurrently": "^7.6.0",
     "fetch-json": "^3.0.3",
+    "mocha": "^10.2.0",
     "node-wget": "^0.4.3",
     "nodemon": "^2.0.20",
     "sqlite3": "^5.1.4",
