@@ -29,7 +29,23 @@ router.route("/:id")
 
     })
     .put(function (req: Request, res: Response, next: CallableFunction) {
-        res.json({ "operation": "put" });
+        authMW.checkAuth(req, res, (authError: Error) => {
+            if (authError) {
+                res.status(parseInt(authError.name)).json({ "error": authError.message });
+            }
+            else {
+                const id: string = req.params.id;
+
+                reviewModel.updateReview(req.app, id, req.body, (err: Error) => {
+                    if (err === null) {
+                        res.status(204).json();
+                    }
+                    else {
+                        res.status(parseInt(err.name)).json({ "error": err.message });
+                    }
+                });
+            }
+        });
     })
     .post(function (req: Request, res: Response, next: CallableFunction) {
         authMW.checkAuth(req, res, (authError: Error) => {
@@ -39,7 +55,7 @@ router.route("/:id")
             else {
                 const id: string = req.params.id;
 
-                reviewModel.createReview(req.app, id, req.body, (err: Error, result: object) => {
+                reviewModel.createReview(req.app, id, req.body, (err: Error) => {
                     if (err === null) {
                         res.status(204).json();
                     }

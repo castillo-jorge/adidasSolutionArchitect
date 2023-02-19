@@ -52,7 +52,6 @@ let reviewModel = {
             "DELETE FROM review WHERE productID=(?)",
             id,
             function (this: any, err: Error) {
-                debugger;
                 if (err !== null) {
                     //any other problem
                     //TODO: create a helper to centralize error management for all data calls
@@ -102,6 +101,37 @@ let reviewModel = {
             })
     },
 
+    updateReview: function (app: any, id: string, payload: any, callback: CallableFunction) {
+        let reviewDB = reviewModel._getmyDB(app);
+
+        reviewDB.run("UPDATE review SET AvgReviews = $AvgReviews, NumReviews = $NumReviews WHERE productID = $productID",
+            {
+                $productID: id,
+                $AvgReviews: payload.AvgReviews,
+                $NumReviews: payload.NumReviews
+            },
+            function (this: any, err: Error) {
+                if (err === null && this.changes) {
+                    //everything OK
+                    callback(null);
+                }
+                else {
+                    let e = new Error();
+                    if (this.changes === 0){
+                        e.message = "Not found";
+                        e.name = "404";
+                    }
+                    else{
+                        e.message = "Unexpected error";
+                        e.name = "500"; 
+                    }
+                    //TODO: check error response and send better error description back to controller...
+                    callback(e);
+                }
+
+            })
+    },
+
     /**
      * @private
      * 
@@ -118,7 +148,8 @@ let reviewModel = {
 let exportReview = {
     getReview: reviewModel.getReview,
     deleteReview: reviewModel.deleteReview,
-    createReview: reviewModel.createReview
+    createReview: reviewModel.createReview,
+    updateReview: reviewModel.updateReview
 }
 
 module.exports = exportReview;
