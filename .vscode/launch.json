@@ -4,6 +4,8 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+      
+
         {
             "type": "node",
             "request": "launch",
@@ -17,26 +19,18 @@
             ]
         },
         {
-            "type": "node",
-            "request": "launch",
-            "name": "Mocha Tests",
-            "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
-            "args": [
-
-            //   "--require",
-            //   "${workspaceFolder}/test/your-setup.js",
-              "--reporter",
-              "dot",
-              "--slow",
-              "5000",
-              "--colors",
-              "${workspaceFolder}/test/**/*.test.js",
-      
-            ],
-            "internalConsoleOptions": "openOnSessionStart",
-            "skipFiles": [
-              "<node_internals>/**"
-            ]
-          }
+          "type": "node",
+          "request": "launch",
+          "name": "Jest Tests",
+          "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
+          "args": [
+              "-i"
+          ],
+          "internalConsoleOptions": "openOnSessionStart",
+          "outFiles": [
+              "${workspaceRoot}/dist/**/*"
+          ],
+          "envFile": "${workspaceRoot}/.env"
+      }
     ]
 }
