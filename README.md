@@ -7,12 +7,12 @@ Adidas Solution Architect Challenge by Jorge Castillo
 3. Execute npm install to download all dependencies
 
 ## To run the application locally
-1. Install the app folowing steps described in [To install the application](##To-install-the-application)
+1. Install the app folowing steps described in [To install the application](##to-install-the-application)
 2. Execute `npm run start`. The app will compile from typescript to javascript and the express server will be launched in address http://localhost:8080
 3. Send requests to the API using any API tool (for instance postman). You can check list of available services in section API description
 
 ## To run the automatic tests
-1. Install the app folowing steps described in [To install the application](##To-install-the-application)
+1. Install the app folowing steps described in [To install the application](##to-install-the-application)
 2. Execute `npm run testSuite`. This command will compile the app from TS to JS, and then launch a test server and execute the automated API tests
 3. Inspect test report (JEST generated) in command line
 
