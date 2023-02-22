@@ -1,6 +1,12 @@
 import { fetchJson } from "fetch-json";
+import { Request } from "express";
+import dotenv from 'dotenv';
+
+dotenv.config();
+const APIURL = process.env.APIURL;
 
 let productModel = {
+
     /** Get the review of a product with productID = id
      * 
      * @param app The express app object
@@ -10,9 +16,8 @@ let productModel = {
     getProduct: function (app: any, id: string, callback: CallableFunction) {
 
         //retrieve product from adidas API
-        let URL: string = "https://adidas.co.uk/api/products/";
 
-        fetch(URL + id)
+        fetch(APIURL + id)
             .then(res => {
                 if (res.status !== 200) {
                     res.json().then((data) => {
@@ -38,14 +43,15 @@ let productModel = {
 
     },
 
-    getProductReview: function (app: any, id: string, callback: CallableFunction) {
+    getProductReview: function (req: Request, id: string, callback: CallableFunction) {
         //retrieve data of reviews microservice
-        let URL: string = "http://localhost:8080/review/"
+        let protocol = req.secure ? "https://" : "http://";
+        let host: string = req.header("host")!;
+        let endpoint: string = "/review/";
 
 
-        fetch(URL + id)
+        fetch(protocol + host + endpoint + id)
             .then(res => {
-                debugger;
                 if (!res.ok) {
                     res.json().then((data) => {
                         let e = new Error();
@@ -55,7 +61,6 @@ let productModel = {
                     });
                 }
                 else {
-                    debugger;
                     res.json().then((data) => {
                         callback(null, data);
                     })

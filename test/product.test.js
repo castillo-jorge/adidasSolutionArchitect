@@ -9,33 +9,30 @@ const baseAPIURL = "http://localhost:" + port;
 let productID = "HY3785";
 let invalidProductID = "notvalidreferencetest";
 
-describe("Test GET /review/", () => {
-  beforeAll(async () => {
+describe("Test GET /product", () => {
+  beforeAll(() => {
     // set up the todo
-    //await request(baseURL).post("/todo").send(newTodo);
   });
-  afterAll(async () => {
-    //await request(baseURL).delete(`/todo/${newTodo.id}`);
-  });
+  afterAll(() => {});
   test("should return 200", () => {
     return request(baseAPIURL)
-      .get("/review/" + productID)
+      .get("/product/" + productID)
       .then((response) => {
         expect(response.statusCode).toBe(200);
       });
   });
   test("check return data", () => {
     return request(baseAPIURL)
-      .get("/review/" + productID)
+      .get("/product/" + productID)
       .then((response) => {
-        expect(response.body.productID).toBe(productID);
-        expect(response.body.AvgReviews).toBe(3.01);
-        expect(response.body.NumReviews).toBe(0);
+        expect(response.body.id).toBe(productID);
+        expect(response.body).toHaveProperty("review");
+        expect(response.body.review.productID).toBe(productID);
       });
   });
   test("check invalid productID", () => {
     return request(baseAPIURL)
-      .get("/review/" + invalidProductID)
+      .get("/product/" + invalidProductID)
       .then((response) => {
         expect(response.statusCode).toBe(404);
       });

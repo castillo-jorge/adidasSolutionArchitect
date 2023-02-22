@@ -16,11 +16,11 @@ router.route("/:id")
     .get(function (req: Request, res: Response, next: CallableFunction) {
         const id: string = req.params.id;
 
-        productModel.getProduct(req.app, id, (err: Error, result: any) => {
+        productModel.getProduct(req, id, (err: Error, result: any) => {
             if (err === null) {
                 //now we have the data coming from adidas API
                 //let's aggregate reviews data
-                productModel.getProductReview(req.app, id, (err: Error, reviewResult: any) => {
+                productModel.getProductReview(req, id, (err: Error, reviewResult: any) => {
                     if (err === null) {
                         //aggregate results
                         result["review"] = reviewResult;
@@ -43,7 +43,7 @@ router.route("/:id")
     })
     .all(function (req: Request, res: Response, next: CallableFunction) {
         // Empty response for all other verbs
-        debugger;
+        
         res.status(501).send();
     })
 
