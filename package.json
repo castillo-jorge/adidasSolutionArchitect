@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "npx tsc",
-    "start": "node dist/index.js",
+    "start":  "npx tsc && node dist/index.js",
     "onlyTest": "jest",
-    "testSuite": "concurrently \"jest\" \"node dist/index.js\" -s first -k --hide server -n \"tests,server\" -r"
+    "testSuite": "npx tsc && concurrently \"jest\" \"node dist/index.js\" -s first -k --hide server -n \"tests,server\" -r"
   },
   "keywords": [],
   "author": "",
