@@ -4,7 +4,7 @@ Adidas Solution Architect Challenge by Jorge Castillo
 ## To install the application
 1. Clone this repository (it is public and no password is required)
 2. It is required to have nodeJS (mine was 18.14.1, at least v18 to support fetch) and npm (mine was 9.3.1)
-3. Execute npm install to download all dependencies
+3. Execute `npm install` to download all dependencies
 
 ## To run the application locally
 1. Install the app folowing steps described in [To install the application](#to-install-the-application)
@@ -20,7 +20,7 @@ Adidas Solution Architect Challenge by Jorge Castillo
 A dockerfile is created to help running the application in a dockerized environment. To run the app using docker it is required:
 1. Install the app folowing steps described in [To install the application](#to-install-the-application)
 2. To have a docker environment configured and working. Please refer to docker documentation for instructions on how to proceed.
-3. Create a docker image using `docker build -t challenge`
+3. Create a docker image using `docker build . -t challenge`
 4. Run the image as a container using `docker run -p 8080:8080 challenge`
 
 ## API documentation
