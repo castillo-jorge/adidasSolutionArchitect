@@ -16,6 +16,13 @@ Adidas Solution Architect Challenge by Jorge Castillo
 2. Execute `npm run testSuite`. This command will compile the app from TS to JS, and then launch a test server and execute the automated API tests
 3. Inspect test report (JEST generated) in command line
 
+## To run the application using docker
+A dockerfile is created to help running the application in a dockerized environment. To run the app using docker it is required:
+1. Install the app folowing steps described in [To install the application](#to-install-the-application)
+2. To have a docker environment configured and working. Please refer to docker documentation for instructions on how to proceed.
+3. Create a docker image using `docker build -t challenge`
+4. Run the image as a container using `docker run -p 8080:8080 challenge`
+
 ## API documentation
 
 ### Review service
@@ -102,3 +109,4 @@ Adidas Solution Architect Challenge by Jorge Castillo
 * Service response code: 500
 * Response datatype: JSON
 * Response data: error
+
